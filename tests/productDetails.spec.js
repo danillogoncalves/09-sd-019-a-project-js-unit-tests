@@ -30,19 +30,13 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
   it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
     // ESCREVA SEUS TESTES ABAIXO:
     const result = productDetails('Alcool gel', 'Máscara');
-    const twoItensObject = () => {
-      for (let index =0; Object.values(result); index += 1) {
-        if (typeof Object.values(result)[index] !== 'object') {
-          return false;
-        }
-      }
-      return true;
-    }
     expect(typeof productDetails).toBe('function');
     expect(typeof result).toBe('object');
     expect(Object.keys(result).length).toBe(2);
-    expect(twoItensObject).toBeTruthy();
-    expect(result[0].name !== result[1].name).toBeTruthy();
-    expect((result[0].details.productId).slice(-3) === (result[1].details.productId).slice(-3)).toBeTruthy();
+    expect(typeof Object.values(result)[0]).toBe('object');
+    expect(typeof Object.values(result)[1]).toBe('object');
+    expect(result[0].name !== result[1].name).toBe(true);
+    expect(Object.values(result)[0].details.productId.slice(-3)).toBe('123');
+    expect(Object.values(result)[1].details.productId.slice(-3)).toBe('123');
   });
 });
