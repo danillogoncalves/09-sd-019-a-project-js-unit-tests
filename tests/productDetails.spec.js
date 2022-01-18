@@ -40,8 +40,10 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
     expect(typeof Object.values(result)[0]).toBe('object');
     expect(typeof Object.values(result)[1]).toBe('object');
     // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
-    expect(result[0].name !== result[1].name).toBe(true);
+    // Ajudando Verônica Alves - Turma 19 - Tribo A, arrumei o meu teste.
+    expect(result[0] !== result[1]).toBe(true);
     // Teste se os dois productIds terminam com 123.
+    // Discutindo sobre esse teste com o Raphael Martins - Turma 19 - Tribo A, melhorei esse teste.
     expect(Object.values(result)[0].details.productId.slice(-3)).toBe('123');
     expect(Object.values(result)[1].details.productId.slice(-3)).toBe('123');
   });
