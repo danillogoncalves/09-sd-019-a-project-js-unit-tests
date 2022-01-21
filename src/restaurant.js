@@ -80,23 +80,23 @@
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 const meuObj = { food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } };
 
-const restaurant = {};
-
-const orderFromMenu = (string) => {
-  restaurant.consumption.push(string);
-};
-
 const createMenu = (myMenu) => {
-  restaurant.fetchMenu = () => myMenu;
-  restaurant.consumption = [];
-  restaurant.order = orderFromMenu;
+  const restaurant = {
+    fetchMenu: () => myMenu,
+    consumption: [],
+    order: (string) => {
+      restaurant.consumption.push(string);
+    },
+  };
   return restaurant;
 };
 
-const meuRestaurante = createMenu(meuObj);
-
-console.log(meuRestaurante.consumption);
-meuRestaurante.order('coxinha');
-console.log(meuRestaurante.consumption);
+const objetoRetornado = createMenu(meuObj);
+const objetoRetornado1 = createMenu(meuObj);
+console.log(objetoRetornado.consumption);
+objetoRetornado.order('coxinha');
+objetoRetornado1.order('agua');
+console.log(objetoRetornado.consumption);
+console.log(objetoRetornado1.consumption);
 
 module.exports = createMenu;
