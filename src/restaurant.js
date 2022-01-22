@@ -87,16 +87,19 @@ const createMenu = (myMenu) => {
     order: (string) => {
       restaurant.consumption.push(string);
     },
+    pay: () => {
+      let bill = 0;
+      for (let index of restaurant.consumption) {
+        if (restaurant.fetchMenu().food[index]) {
+          bill += restaurant.fetchMenu().food[index];
+        } else {
+          bill += restaurant.fetchMenu().drink[index];
+        }
+      }
+      return Number((bill * 1.1).toFixed(2));
+    },
   };
   return restaurant;
 };
-
-const objetoRetornado = createMenu(meuObj);
-const objetoRetornado1 = createMenu(meuObj);
-console.log(objetoRetornado.consumption);
-objetoRetornado.order('coxinha');
-objetoRetornado1.order('agua');
-console.log(objetoRetornado.consumption);
-console.log(objetoRetornado1.consumption);
 
 module.exports = createMenu;
